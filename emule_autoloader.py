@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 '''
-File: ed2k_autoload.py
 Author: [Hurd]Donkey
 Description: A script parse html dom and search ed2k links,
  then add emule task on web console.
