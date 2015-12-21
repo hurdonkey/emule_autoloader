@@ -1,0 +1,1280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<title>eMule 0.50a - Web控制面板</title>
+<style type="text/css">
+img
+{
+border : 0px;
+}
+img.link
+{
+cursor:hand;
+}
+form
+{
+display: inline;
+}
+a:active, a:link, a:visited
+{
+color: white;
+text-decoration: none;
+}
+a:hover
+{
+color: #FFC412;
+text-decoration: none;
+}
+.down-line-downloading a:hover
+{
+color: #FFC412;
+text-decoration: none;
+}
+.down-header, .down-header-left, .down-header-right,
+.down-line-hashing, .down-line-hashing-left, .down-line-hashing-right,
+.down-line-waitinghash, .down-line-waitinghash-left, .down-line-waitinghash-right,
+.down-line-error, .down-line-error-left, .down-line-error-right,
+.down-line-stalled, .down-line-stalled-left, .down-line-stalled-right,
+.down-line-complete, .down-line-complete-left, .down-line-complete-right,
+.down-line-completing, .down-line-completing-left, .down-line-completing-right,
+.down-line-waiting, .down-line-waiting-left, .down-line-waiting-right,
+.down-line-paused, .down-line-paused-left, .down-line-paused-right,
+.down-line-stopped, .down-line-stopped-left, .down-line-stopped-right,
+.down-line-downloading, .down-line-downloading-left, .down-line-downloading-right,
+.up-header, .up-header-left,
+.up-line-uploading, .up-line-uploading-left,
+.up-line-connecting, .up-line-connecting-left,
+.server-header, .server-header-left,
+.server-line-disconnected, .server-line-disconnected-left,
+.server-line-high, .server-line-high-left,
+.server-line-low, .server-line-low-left,
+.server-line-connecting, .server-line-connecting-left,
+.server-line-failed, .server-line-failed-left,
+.shared-header, .shared-header-left,
+.shared-line-file, .shared-line-file-left,
+.shared-line-filedown, .shared-line-filedown-left,
+.header, .smallheader, .commontext,
+.upqueue-header, .upqueue-header-left,
+.upqueue-none-line, .upqueue-none-line-left,
+.upqueue-banned-line, .upqueue-banned-line-left,
+.upqueue-friend-line, .upqueue-friend-line-left,
+.upqueue-credit-line, .upqueue-credit-line-left,
+.upqueue-next-line, .upqueue-next-line-left,
+.search-header, .search-header-left, .search-header-right, .search-main, .search-line, .search-line-left, .search-line-right,
+.addserver-header, .addserver-line
+{
+font-family : Tahoma;
+font-size: 8pt;
+}
+.tabs
+{
+font-family : Tahoma;
+font-size: 8pt;
+background-color : #1F76A5;
+}
+.tabs_too
+{
+font-family : Tahoma;
+font-size: 8pt;
+background-color : #0075B3;
+}
+.tabs_three
+{
+font-family : Tahoma;
+font-size: 10pt;
+font-weight: bold;
+}
+.tabs_four
+{
+font-family : Tahoma;
+font-size: 8pt;
+}
+.tabs_five
+{
+font-family : Tahoma;
+font-size: 8pt;
+background-color : #005784;
+}
+.down-header, .down-line-hashing, .down-line-waitinghash, .down-line-error, .down-line-stalled, .down-line-complete, .down-line-completing, .down-line-waiting, .down-line-paused, .down-line-stopped, .down-line-downloading,
+.up-header, .up-line-connecting, .up-line-uploading,
+.server-header, .server-line-disconnected, .server-line-high, .server-line-low, .server-line-connecting, .server-line-failed,
+.shared-header, .shared-line-file, .shared-line-filedown,
+.upqueue-header, .upqueue-none-line, .upqueue-banned-line, .upqueue-friend-line, .upqueue-credit-line, .upqueue-next-line,
+.search-header, .search-line, .addserver-header, .addserver-line
+{
+text-align : center;
+}
+.down-header-left, .down-line-hashing-left, .down-line-waitinghash-left, .down-line-error-left, .down-line-stalled-left, .down-line-complete-left, .down-line-completing-left, .down-line-waiting-left, .down-line-paused-left, .down-line-stopped-left, .down-line-downloading-left,
+.up-header-left, .upqueue-header-left, .up-line-uploading-left, .up-line-connecting-left,
+.server-header-left, .server-line-disconnected-left, .server-line-high-left, .server-line-low-left, .server-line-connecting-left, .server-line-failed-left, .shared-header-left,
+.shared-line-file-left, .shared-line-filedown-left,
+.upqueue-none-line-left, .upqueue-banned-line-left, .upqueue-friend-line-left, .upqueue-credit-line-left, .upqueue-next-line-left,
+.search-line-left, .search-header-left, .search-main
+{
+text-align : left;
+}
+.down-header-right, .down-line-hashing-right, .down-line-waitinghash-right, .down-line-error-right, .down-line-stalled-right, .down-line-complete-right, .down-line-completing-right, .down-line-waiting-right, .down-line-paused-right, .down-line-stopped-right, .down-line-downloading-right, .search-line-right, .search-header-right
+{
+text-align : right;
+}
+.down-header, .down-header-left, .down-header-right,
+.up-header, .up-header-left, .server-header, .server-header-left,
+.shared-header, .shared-header-left, .upqueue-header, .upqueue-header-left,
+.addserver-header, .search-header, .search-header-left, .search-header-right
+{
+background-color : #005784;
+}
+.search-main
+{
+background-color : #000000;
+}
+.header
+{
+background-color : #0046AC;
+}
+.smallheader
+{
+background-color : #003C6E;
+color : #FFFFFF;
+}
+.commontext
+{
+background-color : #FFFFFF;
+color : #000000;
+}
+.down-line-hashing, .down-line-waitinghash, .down-line-error, .down-line-stalled, .down-line-complete, .down-line-completing, .down-line-waiting, .down-line-paused, .down-line-stopped, .down-line-downloading,
+.down-line-hashing-left, .down-line-waitinghash-left, .down-line-error-left, .down-line-stalled-left, .down-line-complete-left, .down-line-completing-left, .down-line-waiting-left, .down-line-paused-left, .down-line-stopped-left, .down-line-downloading-left,
+.down-line-hashing-right, .down-line-waitinghash-right, .down-line-error-right, .down-line-stalled-right, .down-line-complete-right, .down-line-completing-right, .down-line-waiting-right, .down-line-paused-right, .down-line-stopped-right, .down-line-downloading-right,
+.up-line-connecting, .up-line-connecting-left, .up-line-uploading, .up-line-uploading-left,
+.server-line-disconnected, .server-line-disconnected-left,
+.server-line-high, .server-line-high-left,
+.server-line-low, .server-line-low-left,
+.server-line-connecting, .server-line-connecting-left,
+.server-line-failed, .server-line-failed-left,
+.shared-line-file, .shared-line-file-left,
+.shared-line-filedown, .shared-line-filedown-left,
+.upqueue-none-line, .upqueue-none-line-left,
+.upqueue-banned-line, .upqueue-banned-line-left,
+.upqueue-friend-line, .upqueue-friend-line-left,
+.upqueue-credit-line, .upqueue-credit-line-left,
+.upqueue-next-line, .upqueue-next-line-left,
+.search-line, .search-line-left, .search-line-right, .addserver-line
+{
+background-color : #1F76A5;
+}
+.down-line-waiting a:active, .down-line-waiting a:link, .down-line-waiting a:visited,
+.shared-line-file a:active, .shared-line-file a:link, .shared-line-file a:visited,
+.server-line-disconnected a:active, .server-line-disconnected a:link, .server-line-disconnected a:visited
+{
+color : #ffffff;
+}
+.server-line-high, .server-line-high-left, .server-line-high a:active, .server-line-high a:link, .server-line-high a:visited,
+.upqueue-friend-line, .upqueue-friend-line-left,
+.up-line-uploading, .up-line-uploading-left,
+.down-line-downloading, .down-line-downloading-left, .down-line-downloading-right, .down-line-downloading a:link, .down-line-downloading a:active, .down-line-downloading a:visited
+{
+color : #00ff00;
+}
+.server-line-low, .server-line-low-left, .server-line-low a:active, .server-line-low a:link, .server-line-low a:visited,
+.upqueue-credit-line, .upqueue-credit-line-left,
+.down-line-hashing, .down-line-hashing-left, .down-line-hashing-right, .down-line-hashing a:active, .down-line-hashing a:link, .down-line-hashing a:visited
+{
+color : #ffff00;
+}
+.down-line-waitinghash, .down-line-waitinghash-left, .down-line-waitinghash-right, .down-line-waitinghash a:active, .down-line-waitinghash a:link, .down-line-waitinghash a:visited
+{
+color : #feff89;
+}
+.server-line-connecting, .server-line-connecting-left, .server-line-connecting a:active, .server-line-connecting a:link, .server-line-connecting a:visited,
+.down-line-complete, .down-line-complete-left, .down-line-complete-right, .down-line-complete a:active, .down-line-complete a:link, .down-line-complete a:visited
+{
+color : #1D3445;
+}
+.down-line-completing, .down-line-completing-left, .down-line-completing-right, .down-line-completing a:active, .down-line-completing a:link, .down-line-completing a:visited
+{
+color : #2D4F69;
+}
+.upqueue-banned-line, .upqueue-banned-line-left,
+.down-line-error, .down-line-error-left, .down-line-error-right, .down-line-error a:active, .down-line-error a:link, .down-line-error a:visited
+{
+color : #FF4040;
+}
+.upqueue-next-line, .upqueue-next-line-left,
+.down-line-stalled, .down-line-stalled-left, .down-line-stalled-right, .down-line-stalled a:active, .down-line-stalled a:link, .down-line-stalled a:visited
+{
+color : #FFC412;
+}
+.down-line-paused, .down-line-paused-left, .down-line-paused-right, .down-line-paused a:active, .down-line-paused a:link, .down-line-paused a:visited,
+.shared-line-filedown, .shared-line-filedown-left, .shared-line-filedown a:active, .shared-line-filedown a:link, .shared-line-filedown a:visited,
+.server-line-failed, .server-line-failed-left,  .server-line-failed a:active, .server-line-failed a:link, .server-line-failed a:visited
+{
+color : #C1C1C1;
+}
+.down-line-stopped, .down-line-stopped-left, .down-line-stopped-right, .down-line-stopped a:active, .down-line-stopped a:link, .down-line-stopped a:visited
+{
+color : #A0A0A0;
+}
+.percent_table
+{
+border:0px solid #000000;
+border-collapse: collapse;
+}
+.message
+{
+font-family: Tahoma;
+font-size: 8pt;
+font-weight: bold;
+color: #FFFFFF;
+background-color: #005784;
+}
+.dinput
+{
+border-width: 1px;
+border-color: black;
+border-style: dotted;
+}
+.fdown
+{
+font-weight: bold;
+color: #CC0000;
+}
+.fok
+{
+font-weight: bold;
+color: #CCFFCC;
+}
+.menuskin
+{
+position: absolute;
+background-color: #005784;
+border: 1px solid black;
+line-height: 18px;
+font: normal 12px Tahoma;
+z-index: 100;
+visibility: hidden;
+}
+.menuskin a
+{
+text-decoration: none;
+color: white;
+}
+.menuimages
+{
+background-color: #003C6E;
+border: 2px #003C6E solid;
+vertical-align: middle;
+}
+.menuchecked
+{
+background-color: #005784;
+border: 2px #005784 solid;
+vertical-align: middle;
+}
+#mouseoverstyle
+{
+background-color: #003C6E;
+}
+#mouseoverstyle .menuchecked
+{
+background-color: #003C6E;
+border: 2px #003C6E solid;
+}
+/* Tooltip customization */
+div#tipDiv
+{
+position:absolute; visibility:hidden; left:0; top:0; z-index:10000;
+background-color:#005784; border:1px solid #000000; 
+width:400; padding:4px;
+font-family: Tahoma, Verdana, Arial;
+color:#FFFFFF; font-size:8pt; line-height:1.2;
+}
+</style>
+
+
+<script language="JavaScript1.2">
+<!--
+/*************************************************************************
+	Pop-it menu - By Dynamic Drive
+	For full source code and more DHTML scripts, visit
+	http://www.dynamicdrive.com
+	This credit MUST stay intact for use
+*************************************************************************/
+var ie4=document.all
+var ns6=document.getElementById&&!document.all
+var ns4=document.layers
+var ed2kinfo;
+var iteminfo;
+var removeconfirm;
+var confirmclose;
+var confirmreboot;
+var confirmshutdown;
+
+function downmenu(event,admin,finfo,ed2k,downstate,isgetflc,fname,session,filehash,commentinfo,downloadable)
+{
+	var code = new Array()
+	ed2kinfo = ed2k
+	iteminfo = finfo
+	cmts = commentinfo
+	removeconfirm = '确定要取消并删除此文件吗?\n' + fname
+
+	if(downstate == "hashing" || downstate == "waitinghash")
+		code = '<div class="menuitems"><img class="menuimages" src="l_hasherror.gif"><img class="menuchecked" src="checked_no.gif">Hash中&nbsp;</div>'
+	else if(downstate == "error")
+		code = '<div class="menuitems"><img class="menuimages" src="l_hasherror.gif"><img class="menuchecked" src="checked_no.gif">错误&nbsp;</div>'
+	else if(downstate == "completing")
+		code = '<div class="menuitems"><img class="menuimages" src="l_hasherror.gif"><img class="menuchecked" src="checked_no.gif">完成中&nbsp;</div>'
+	else
+	{
+		code = '';
+
+		if(admin == "admin")
+		{
+			if(downstate == "complete") {
+				if (downloadable=="yes")
+					code += '<a href="?ses=' + session + '&w=getfile&filehash=' + filehash +'"><div class="menuitems"><img class="menuimages" src="downloading.gif"><img class="menuchecked" src="checked_no.gif">下载&nbsp;</div></a>'
+				code += '<a href="?ses=' + session + '&w=transfer&clearcompleted=' + filehash +'"><div class="menuitems"><img class="menuimages" src="l_clear.gif"><img class="menuchecked" src="checked_no.gif">移除已完成的文件(L)&nbsp;</div></a>'
+			} else {
+				if(downstate == "paused" || downstate == "stopped")
+					code += '<a href="?ses=' + session + '&w=transfer&op=resume&file=' + filehash + '"><div class="menuitems"><img class="menuimages" src="l_resume.gif"><img class="menuchecked" src="checked_no.gif">继续(R)&nbsp;</div></a>'
+				if(downstate != "stopped")
+					code += '<a href="?ses=' + session + '&w=transfer&op=stop&file=' + filehash + '"><div class="menuitems"><img class="menuimages" src="l_stop.gif"><img class="menuchecked" src="checked_no.gif">停止(S)&nbsp;</div></a>'
+				if(downstate != "paused")
+					code += '<a href="?ses=' + session + '&w=transfer&op=pause&file=' + filehash + '"><div class="menuitems"><img class="menuimages" src="l_pause.gif"><img class="menuchecked" src="checked_no.gif">暂停(P)&nbsp;</div></a>'
+				code += '<a href="?ses=' + session + '&w=transfer&op=cancel&file=' + filehash + '" onclick="return confirm(removeconfirm)"><div class="menuitems"><img class="menuimages" src="l_cancel.gif"><img class="menuchecked" src="checked_no.gif">取消(C)&nbsp;</div></a>'
+				code += '<a href="javascript:filerename(\'' + session + '\',\'' + filehash + '\',\'' + fname + '\')"><div class="menuitems"><img class="menuimages" src="l_rename.gif"><img class="menuchecked" src="checked_no.gif">改名&nbsp;</div></a>'
+
+        if(isgetflc == "enabled")
+					code += '<a href="?ses=' + session + '&w=transfer&op=getflc&file=' + filehash + '"><div class="menuitems"><img class="menuimages" src="l_getflc.gif"><img class="menuchecked" src="checked.gif">优先下载预览所需要的文件块&nbsp;</div></a>'
+        else if(isgetflc == "disabled")
+					code += '<a href="?ses=' + session + '&w=transfer&op=getflc&file=' + filehash + '"><div class="menuitems"><img class="menuimages" src="l_getflc.gif"><img class="menuchecked" src="checked_no.gif">优先下载预览所需要的文件块&nbsp;</div></a>'
+			}
+		}
+		
+		if (cmts=="yes") {
+			code += '<a href="?ses=' + session + '&w=commentlist&filehash=' + filehash+'" target="_blank"><div class="menuitems"><img class="menuimages" src="l_comments.gif"><img class="menuchecked" src="checked_no.gif">显示所有注释(N)&nbsp;</div></a>'
+		}
+			
+		code += '<a href="javascript:alert(iteminfo);"><div class="menuitems"><img class="menuimages" src="l_info.gif"><img class="menuchecked" src="checked_no.gif">文件详情&nbsp;</div></a>'
+		code += '<a href="javascript:ToClipboard(ed2kinfo);"><div class="menuitems"><img class="menuimages" src="l_ed2klink.gif"><img class="menuchecked" src="checked_no.gif">文件链接&nbsp;</div></a>'
+	}
+
+	showmenu(event,code)
+}
+
+function filerename(session,filehash,fname)
+{
+	var newname = prompt("改名", fname);
+
+	if (newname != fname && newname != null)
+	        window.location='/?ses=' + session + '&w=transfer&op=rename&name=' + escape(newname) + '&file=' + filehash;
+}
+
+function servermenu(event,admin,ed2k,session,ip,port,isstatic)
+{
+	var code = new Array()
+	ed2kinfo = ed2k
+
+	code = '<a href="javascript:ToClipboard(ed2kinfo);"><div class="menuitems"><img class="menuimages" src="l_ed2klink.gif"><img class="menuchecked" src="checked_no.gif">文件链接&nbsp;</div></a>'
+
+	if(admin == "admin")
+	{
+		code += '<a href="?ses=' + session + '&w=server&c=connect&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuimages" src="l_connect.gif"><img class="menuchecked" src="checked_no.gif">连接&nbsp;</div></a>'
+		code += '<a href="?ses=' + session + '&w=server&c=remove&ip=' + ip + '&port=' + port + '" onclick="return confirm(\'确定要把这个服务器从列表中删除吗?\')' + '"><div class="menuitems"><img class="menuimages" src="l_cancel.gif"><img class="menuchecked" src="checked_no.gif">删除所选服务器&nbsp;</div></a>'
+		if(isstatic)
+			code += '<a href="?ses=' + session + '&w=server&c=removefromstatic&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuimages" src="l_static.gif"><img class="menuchecked" src="checked.gif">静态&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=server&c=addtostatic&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuimages" src="l_static.gif"><img class="menuchecked" src="checked_no.gif">静态&nbsp;</div></a>'
+	}
+
+	showmenu(event,code)
+}
+
+function sharedmenu(event,admin,ed2k,session,hash,fname,filestate,downloadable)
+{
+	var code = new Array()
+	ed2kinfo = ed2k
+
+	code = '<a href="javascript:ToClipboard(ed2kinfo);"><div class="menuitems"><img class="menuimages" src="l_ed2klink.gif"><img class="menuchecked" src="checked_no.gif">文件链接&nbsp;</div></a>'
+	if (downloadable=="yes")
+		code += '<a href="?ses=' + session + '&w=getfile&filehash=' + hash +'"><div class="menuitems"><img class="menuimages" src="downloading.gif"><img class="menuchecked" src="checked_no.gif">下载&nbsp;</div></a>'
+
+	showmenu(event,code)
+}
+
+function adminmenu(event,admin)
+{
+	var code = new Array()
+
+	confirmclose = '你真的想退出eMule?'
+	confirmreboot = '你真的想重起系统?'
+	confirmshutdown = '你真的想关闭系统么?'
+
+	code = '<a href="javascript:ShowHide(' + "'" + 'ed2k_open' + "'" + ');"><div class="menuitems"><img class="menuimages" src="l_ed2klink.gif" alt="文件链接"><img class="menuchecked" src="checked_no.gif">文件链接&nbsp;</div></a>'
+	code += '<a href="?ses=621927177&amp;w=logout"><div class="menuitems"><img class="menuimages" src="l_logout.gif" alt="注销"><img class="menuchecked" src="checked_no.gif">注销&nbsp;</div></a>'
+
+	if(admin == "admin")
+	{
+	  code += '<div class="menuitems">&nbsp;</div></a>'
+		code += '<a href="?ses=621927177&amp;w=close" onclick="return confirm(confirmclose)"><div class="menuitems"><img class="menuimages" src="l_close.gif" alt="关闭 eMule"><img class="menuchecked" src="checked_no.gif">关闭 eMule&nbsp;</div></a>'
+		code += '<a href="?ses=621927177&amp;w=reboot" onclick="return confirm(confirmreboot)"><div class="menuitems"><img class="menuimages" src="l_reboot.gif" alt="重起系统"><img class="menuchecked" src="checked_no.gif">重起系统&nbsp;</div></a>'
+		code += '<a href="?ses=621927177&amp;w=shutdown" onclick="return confirm(confirmshutdown)"><div class="menuitems"><img class="menuimages" src="l_shutdown.gif" alt="关闭系统"><img class="menuchecked" src="checked_no.gif">关闭系统&nbsp;</div></a>'
+	}
+
+	showmenu(event,code)
+}
+
+function linkmenu(event)
+{
+	var code = new Array()
+
+
+	code = '<a href="http://vcheck.emule-project.net/en/version_check.php?version=1290&language=2052" target="_blank"><div class="menuitems"><img class="menuimages" src="l_version.gif" alt="版本"><img class="menuchecked" src="checked_no.gif">eMule Version Check&nbsp;</div></a>'
+	code += '<a href="http://emule-project.net" target="_blank"><div class="menuitems"><img class="menuimages" src="l_homepage.gif"><img class="menuchecked" src="checked_no.gif">eMule Homepage&nbsp;</div></a>'
+	code += '<a href="http://forum.emule-project.net" target="_blank"><div class="menuitems"><img class="menuimages" src="l_forum.gif"><img class="menuchecked" src="checked_no.gif">eMule Forum&nbsp;</div></a>'
+	code += '<a href="http://www.emule-project.net/home/perl/help.cgi" target="_blank"><div class="menuitems"><img class="menuimages" src="l_info.gif"><img class="menuchecked" src="checked_no.gif">eMule Doc,FAQ&nbsp;</div></a>'
+
+	showmenu(event,code)
+}
+
+function upmenu(event,admin,clientextra,userhash)
+{
+	var code = new Array()
+
+	if(admin == "admin")
+	{
+		if(clientextra == "friend")
+		{
+			code = '<a href="?ses=621927177&amp;w=transfer&op=removefriend&amp;userhash=' + userhash + '"><div class="menuitems"><img class="menuimages" src="l_friend.gif" alt="好友"><img class="menuchecked" src="checked.gif">好友&nbsp;</div></a>'
+		}
+		else
+		{
+			code = '<a href="?ses=621927177&amp;w=transfer&op=addfriend&amp;userhash=' + userhash + '"><div class="menuitems"><img class="menuimages" src="l_friend.gif" alt="好友"><img class="menuchecked" src="checked_no.gif">好友&nbsp;</div></a>'
+		}
+
+		showmenu(event,code)
+	}
+}
+
+function searchmenu(event,ed2k)
+{
+	var code = new Array()
+
+	code = '<a href="' + ed2k + '"><div class="menuitems"><img class="menuimages" src="l_ed2klink.gif" alt="文件链接"><img class="menuchecked" src="checked_no.gif">文件链接&nbsp;</div></a>'
+
+	showmenu(event,code)
+}
+
+function columnmenu(event,tab,menu, m1,e1,m2,e2,m3,e3,m4,e4,m5,e5,m6,e6,m7,e7,m8,e8,m9,e9,m10,e10,m11,e11)
+{
+	var code = new Array();
+	code = "";
+
+	for (i=1; i<=11; i++)
+	{
+		try
+		{
+			var e = eval('e'+i);
+			var m = eval('m'+i);
+			var j = i - 1;
+
+			if(e != "") { code += '<a href="?ses=621927177&amp;w='+tab+'&amp;c='+menu+'&amp;m='+j+'&amp;v=1"><div class="menuitems"><img class="menuchecked" src="checked.gif">'+m+'&nbsp;</div></a>' }
+			else if(m != "") { code += '<a href="?ses=621927177&amp;w='+tab+'&amp;c='+menu+'&amp;m='+j+'&amp;v=0"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">'+m+'&nbsp;</div></a>' }
+		}
+		catch(e)
+		{
+			// Doesn't exist that variable
+		}
+	}
+
+	showmenu(event,code);
+}
+
+function catpriomenu(event,admin,session)
+{
+	var code = new Array()
+
+	if(admin == "admin")
+	{
+		code = '<a href="?ses=' + session + '&w=transfer&c=menuprio&p=low"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">低&nbsp;</div></a>'
+		code += '<a href="?ses=' + session + '&w=transfer&c=menuprio&p=normal"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">普通&nbsp;</div></a>'
+		code += '<a href="?ses=' + session + '&w=transfer&c=menuprio&p=high"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">高&nbsp;</div></a>'
+		code += '<a href="?ses=' + session + '&w=transfer&c=menuprio&p=auto"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">自动&nbsp;</div></a>'
+
+		showmenu(event,code)
+	}
+}
+
+function serverpriomenu(event,admin,session,ip,port,priority)
+{
+	var code = new Array()
+
+	if(admin == "admin")
+	{
+		if(priority == "Low")
+			code = '<a href="?ses=' + session + '&w=server&c=priolow&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">低&nbsp;</div></a>'
+		else
+			code = '<a href="?ses=' + session + '&w=server&c=priolow&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">低&nbsp;</div></a>'
+		if(priority == "Normal")
+			code += '<a href="?ses=' + session + '&w=server&c=prionormal&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">普通&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=server&c=prionormal&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">普通&nbsp;</div></a>'
+		if(priority == "High")
+			code += '<a href="?ses=' + session + '&w=server&c=priohigh&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">高&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=server&c=priohigh&ip=' + ip + '&port=' + port + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">高&nbsp;</div></a>'
+
+		showmenu(event,code)
+	}
+}
+
+function downpriomenu(event,admin,session,filehash,priority,downstate)
+{
+	var code = new Array()
+
+	if(downstate == "complete" || downstate == "completing")
+		return;
+
+	if(admin == "admin")
+	{
+		if(priority == "Low")
+			code = '<a href="?ses=' + session + '&w=transfer&op=priolow&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">低&nbsp;</div></a>'
+		else
+			code = '<a href="?ses=' + session + '&w=transfer&op=priolow&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">低&nbsp;</div></a>'
+		if(priority == "Normal")
+			code += '<a href="?ses=' + session + '&w=transfer&op=prionormal&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">普通&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=transfer&op=prionormal&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">普通&nbsp;</div></a>'
+		if(priority == "High")
+			code += '<a href="?ses=' + session + '&w=transfer&op=priohigh&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">高&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=transfer&op=priohigh&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">高&nbsp;</div></a>'
+		if(priority == "Auto")
+			code += '<a href="?ses=' + session + '&w=transfer&op=prioauto&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">自动&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=transfer&op=prioauto&file=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">自动&nbsp;</div></a>'
+
+		showmenu(event,code)
+	}
+}
+
+function sharedpriomenu(event,admin,session,filehash,priority)
+{
+	var code = new Array()
+
+	if(admin == "admin")
+	{
+		if(priority == "VeryLow")
+			code = '<a href="?ses=' + session + '&w=shared&prio=verylow&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">很低&nbsp;</div></a>'
+		else
+			code = '<a href="?ses=' + session + '&w=shared&prio=verylow&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">很低&nbsp;</div></a>'
+		if(priority == "Low")
+			code += '<a href="?ses=' + session + '&w=shared&prio=low&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">低&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=shared&prio=low&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">低&nbsp;</div></a>'
+		if(priority == "Normal")
+			code += '<a href="?ses=' + session + '&w=shared&prio=normal&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">普通&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=shared&prio=normal&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">普通&nbsp;</div></a>'
+		if(priority == "High")
+			code += '<a href="?ses=' + session + '&w=shared&prio=high&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">高&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=shared&prio=high&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">高&nbsp;</div></a>'
+		if(priority == "Release")
+			code += '<a href="?ses=' + session + '&w=shared&prio=release&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">发布&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=shared&prio=release&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">发布&nbsp;</div></a>'
+		if(priority == "Auto")
+			code += '<a href="?ses=' + session + '&w=shared&prio=auto&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked.gif">自动&nbsp;</div></a>'
+		else
+			code += '<a href="?ses=' + session + '&w=shared&prio=auto&hash=' + filehash + '"><div class="menuitems"><img class="menuchecked" src="checked_no.gif">自动&nbsp;</div></a>'
+
+		showmenu(event,code)
+	}
+}
+
+function showmenu(e,code,downstate)
+{
+	if (!document.all&&!document.getElementById&&!document.layers)
+		return;
+
+	if(downstate == "complete" || downstate == "completing")
+		return;
+
+	clearhidemenu()
+
+	menuobj=ie4? document.all.popmenu : ns6? document.getElementById("popmenu") : ns4? document.popmenu : ""
+	menuobj.thestyle=(ie4||ns6)? menuobj.style : menuobj
+
+	if (ie4||ns6)
+		menuobj.innerHTML=code
+	else
+	{
+		menuobj.document.write('<layer name=gui bgColor=#E6E6E6 onmouseover="clearhidemenu()" onmouseout="hidemenu()">' + code + '</layer>')
+		menuobj.document.close()
+	}
+
+	menuobj.contentwidth=(ie4||ns6)? menuobj.offsetWidth : menuobj.document.gui.document.width
+	menuobj.contentheight=(ie4||ns6)? menuobj.offsetHeight : menuobj.document.gui.document.height
+	eventX=ie4? event.clientX+5 : ns6? e.clientX+5 : e.x+5
+	eventY=ie4? event.clientY : ns6? e.clientY : e.y
+
+	var rightedge=ie4? document.body.clientWidth-eventX : window.innerWidth-eventX
+	var bottomedge=ie4? document.body.clientHeight-eventY : window.innerHeight-eventY
+
+	if (rightedge<menuobj.contentwidth)
+		menuobj.thestyle.left=ie4? document.body.scrollLeft+eventX-menuobj.contentwidth : ns6? window.pageXOffset+eventX-menuobj.contentwidth : eventX-menuobj.contentwidth
+	else
+		menuobj.thestyle.left=ie4? document.body.scrollLeft+eventX : ns6? window.pageXOffset+eventX : eventX
+
+	if (bottomedge>=menuobj.contentheight)
+		menuobj.thestyle.top=eventY + (ie4? document.body.scrollTop : ns6? window.pageYOffset : 0)
+	else if (eventY>menuobj.contentheight)
+		menuobj.thestyle.top=eventY + (ie4? document.body.scrollTop-menuobj.contentheight : ns6? window.pageYOffset-menuobj.contentheight : -menuobj.contentheight)
+	else
+		menuobj.thestyle.top=ie4? document.body.scrollTop : ns6? window.pageYOffset : 0
+
+	menuobj.thestyle.visibility="visible"
+
+	return false
+}
+
+function contains_ns6(a, b)
+{
+	if (b == null)
+		return false;
+	//Determines if 1 element in contained in another- by Brainjar.com
+	while (b.parentNode)
+	if ((b = b.parentNode) == a)
+		return true;
+	return false;
+}
+
+function hidemenu()
+{
+	if (window.menuobj)
+		menuobj.thestyle.visibility=(ie4||ns6)? "hidden" : "hide"
+}
+
+function dynamichide(e)
+{
+	if (ie4&&!menuobj.contains(e.toElement))
+		hidemenu()
+	else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+		hidemenu()
+}
+
+function delayhidemenu()
+{
+	if (ie4||ns6||ns4)
+		delayhide=setTimeout("hidemenu()",500)
+}
+
+function clearhidemenu()
+{
+	if (window.delayhide)
+		clearTimeout(delayhide)
+}
+
+function highlightmenu(e,state)
+{
+	if (document.all)
+		source_el=event.srcElement
+	else if (document.getElementById)
+		source_el=e.target
+
+	if (source_el.className=="menuitems")
+	{
+		source_el.id=(state=="on")? "mouseoverstyle" : ""
+	}
+	else
+	{
+		while(source_el.id!="popmenu")
+		{
+			source_el=document.getElementById? source_el.parentNode : source_el.parentElement
+			if (source_el.className=="menuitems")
+			{
+				source_el.id=(state=="on")? "mouseoverstyle" : ""
+			}
+		}
+	}
+}
+
+if (ie4||ns6)
+	document.onclick=hidemenu
+
+function ToClipboard(txt)
+{
+	if(window.clipboardData) {
+   		window.clipboardData.clearData();
+   		window.clipboardData.setData("Text", txt);
+	} else if(navigator.userAgent.indexOf("Opera")!=-1) {
+		window.location=txt;
+	} else if (window.netscape) {
+		try {
+			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+		} catch (e) {
+			alert("Permission denied! Browse to 'about:config' in your browser\nand set 'signed.applets.codebase_principal_support' to true");
+		}
+		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+		if (!clip)
+			return;
+		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+		if (!trans)
+			return;
+		trans.addDataFlavor('text/unicode');
+		var str = new Object();
+		var len = new Object();
+		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+		var copytext=txt;
+		str.data=copytext;
+		trans.setTransferData("text/unicode",str,copytext.length*2);
+		var clipid=Components.interfaces.nsIClipboard;
+		if (!clip)
+			return false;
+		clip.setData(trans,null,clipid.kGlobalClipboard);
+	}
+}
+var timeoutID;
+var timeout = 120000;
+
+function RefreshPage()
+{
+    location.href = "?ses=621927177&w=transfer&cat=&dummy=9509";
+}
+
+function ToggleTimer()
+{
+    if (timeoutID)
+    {
+        clearTimeout(timeoutID);
+        timeoutID = null;
+        document.images['ImgToggleTimer'].src = 'l_timer_off.gif';
+    }
+    else
+    {
+        SetTimer();
+        if (timeoutID)
+	        document.images['ImgToggleTimer'].src = 'l_timer.gif';
+		else
+	        document.images['ImgToggleTimer'].src = 'l_timer_off.gif';
+    }
+}
+
+function SetTimer()
+{
+    if (timeout != 0)
+        timeoutID = setTimeout("RefreshPage()", timeout);
+}
+
+if (document.all||document.getElementById)
+    SetTimer();
+else
+    window.onload=SetTimer;
+//-->
+</script>
+
+</head>
+<body background="main_bg.gif" text=white link="#2184B5" vlink="#2184B5" alink="#2184B5" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 style="margin:0px">
+<div id="popmenu" class="menuskin" onMouseover="clearhidemenu();highlightmenu(event,'on')" onMouseout="highlightmenu(event,'off');dynamichide(event)"></div>
+  <table border="0" cellpadding="4" cellspacing="0" width="100%" background="main_menubg.gif" class="tabs_three">
+  <tr>
+	<td width="5">&nbsp;</td>
+	<td width="95" nowrap>
+		<a href="#" onMouseover="linkmenu(event)" onMouseout="delayhidemenu()"><img src="h_emule.gif" alt="eMule | Web控制面板"><br />
+			Web控制面板</a>
+	</td>
+	<td width>&nbsp;</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=transfer">
+  			<img src="h_transfer.gif"><br />
+  			传输
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=kad">
+  			<img src="h_kad.gif"><br />
+  			Kad
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=server">
+  			<img src="h_server.gif"><br />
+  			服务器列表
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=search">
+  			<img src="h_search.gif"><br />
+  			搜索(S)
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=shared">
+  			<img src="h_shared.gif"><br />
+  			共享文件
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+		<a href="?ses=621927177&amp;w=stats">
+			<img src="h_statistic.gif"><br />
+  			统计信息
+		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=graphs">
+  			<img src="h_graph.gif"><br />
+  			图形
+		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=621927177&amp;w=options">
+  			<img src="h_preferences.gif"><br />
+  			选项(O)
+  		</a>
+  	</td>
+  	
+  <td width="20">&nbsp;</td>
+	
+	<td width="9%" align="center" valign="top"><br />
+	<a href="javascript:void(0)" onMouseover="adminmenu(event,'admin')" onMouseout="delayhidemenu()"><img src="l_options.gif" align="middle"><br />管理员菜单</a></td>
+	
+	<td>&nbsp;</td>
+	<td width="100" nowrap>
+  		<img src="l_info.gif" align="middle"><a href="?ses=621927177&amp;w=myinfo">&nbsp;&nbsp;我的信息</a><br />
+  		<img src="h_log.gif" align="middle"><a href="?ses=621927177&amp;w=log#end">&nbsp;&nbsp;日志</a><br />
+  		<img src="h_log.gif" align="middle"><a href="?ses=621927177&amp;w=sinfo#end">&nbsp;&nbsp;服务器信息</a><br />
+  		<img src="h_log.gif" align="middle"><a href="?ses=621927177&amp;w=debuglog#end">&nbsp;&nbsp;调试日志</a>
+  	</td>
+  </tr>
+  </table>
+
+<table border="0" cellpadding="2" cellspacing="0" width="100%" height="64">
+<tr>
+<td background="main_topbardarker.gif">
+  
+  <table class="tabs_four" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <tr><td rowspan="2">&nbsp;</td>
+   <td nowrap height="25"><b>连接:</b></td></tr>
+   <tr><td nowrap height="25"><b>状态:</b></td></tr>
+  </table>
+
+</td>
+<td background="main_topbarseperator.gif" width="7">&nbsp;</td>
+<td background="main_topbar.gif">
+
+  <table class="tabs_four" border="0" cellpadding="1" cellspacing="0" width="100%">
+   <td><img src="disconnected.gif" align="left"> 连接断开 (<a href="?ses=621927177&w=server&c=connect">连接到任意服务器</a>) &nbsp;&nbsp;(<img src="l_users.gif" align="middle"> 0&nbsp;&nbsp;<img src="filetype_other.gif" align="middle"> 0)</td>
+   <td width="25%" nowrap><img src="h_kad.gif" width="16" height="16" align="left"> 连接断开 (<a href="?ses=621927177&w=kad&c=connect">连接</a>)</td>
+   <td width="1%"></td>
+   <td width="14%" nowrap><img src="l_calendar.gif" align="middle">
+      <script language="javascript">
+      <!--
+      var d = new Date();
+      s = (d.getDate() < 10 ? "0" : "") + d.getDate() + "." + ((d.getMonth() + 1) < 10 ? "0" : "") + (d.getMonth() + 1) + "." + d.getFullYear() +
+      "</td><td width=\"14%\" nowrap><img src=\"l_clock.gif\" align=\"middle\"> " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" : "") + d.getMinutes() + ":" + (d.getSeconds() < 10 ? "0" : "") + d.getSeconds();
+      document.write(s);
+      //-->
+</script></td>
+    <td></td>
+    
+    <td width="17" align="right">
+    <script language = "javascript">
+	<!--
+		if (timeoutID && timeout != 0)
+	        document.write('<img id="ImgToggleTimer" class="link" align="middle" src="l_timer.gif" onclick="ToggleTimer();">');
+		else
+	        document.write('<img id="ImgToggleTimer" class="link" align="middle" src="l_timer_off.gif" onclick="ToggleTimer();">');
+	//-->
+</script></td>
+
+   </tr>
+   </table>
+   <table class="tabs_four" border="0" cellpadding="1" cellspacing="0" width="100%">
+   <tr>
+    <td style="font-size: 8pt">
+	<img src="arrow_down.gif" align="left" hspace="3" vspace="4"> 下载: 0.0 (无限制)
+	<table width="125" border=1 class="percent_table" cellpadding=0 cellspacing=0 bordercolor="#005784" bgcolor="#99CCFF"><tr><td><img src="qs_down.jpg" width="0.0%" height="8"></td></tr></table>
+    </td>
+    <td style="font-size: 8pt">
+	<img src="arrow_up.gif" align="left" hspace="3" vspace="4"> 上传: 0.0 (无限制)
+	<table width="125" border=1 class="percent_table" cellpadding=0 cellspacing=0 bordercolor="#005784" bgcolor="#99CCFF"><tr><td><img src="qs_up.jpg" width="0.0%" height="8"></td></tr></table>
+    </td>
+    <td style="font-size: 8pt">
+	<img src="l_con.gif" align="left" hspace="3" vspace="4"> 当前连接数: 0 (500)
+	<table width="125" border=1 class="percent_table" cellpadding=0 cellspacing=0 bordercolor="#005784" bgcolor="#99CCFF"><tr><td><img src="qs_con.jpg" width="0.0%" height="8"></td></tr></table>
+    </td>
+    <td style="font-size: 8pt">
+	<img src="l_users.gif" align="left" hspace="3" vspace="4"> 用户数: 0 (0)
+	<table width="125" border=1 class="percent_table" cellpadding=0 cellspacing=0 bordercolor="#005784" bgcolor="#99CCFF"><tr><td><img src="qs_user.jpg" width="0%" height="8"></td></td></tr></table>
+   </td>
+   <td></td>
+   </tr>
+  </table>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<script language = "javascript">
+<!--
+/*************************************************************************
+	dw_tooltip.js
+	version date: Nov 2003
+	requires: dw_event.js and dw_viewport.js
+
+	This code is from Dynamic Web Coding at http://www.dyn-web.com/
+	Copyright 2003 by Sharon Paine 
+	See Terms of Use at http://www.dyn-web.com/bus/terms.html
+	regarding conditions under which you may use this code.
+	This notice must be retained in the code as is!
+*************************************************************************/
+
+var Tooltip = {
+  followMouse: true,
+  offX: 8,
+  offY: 12,
+
+  ready: false,
+  t1: null,
+  t2: null,
+  tipID: "tipDiv",
+  tip: null,
+
+  init: function() {
+    if ( document.createElement && document.body && typeof document.body.appendChild != "undefined" ) {
+      var el = document.createElement("DIV");
+      el.className = "tooltip";
+      el.id = this.tipID;
+      document.body.appendChild(el);
+      this.ready = true;
+    }
+  },
+
+  show: function(e, msg) {
+    if (this.t1) clearTimeout(this.t1);	
+  	if (this.t2) clearTimeout(this.t2); 
+    this.tip = document.getElementById( this.tipID );
+  	// set up mousemove 
+  	if (this.followMouse) 
+      dw_event.add( document, "mousemove", this.trackMouse, true );
+    this.writeTip("");  // for mac ie
+    this.writeTip(msg);
+    viewport.getAll();
+    this.positionTip(e);
+  	this.t1 = setTimeout("document.getElementById('" + Tooltip.tipID + "').style.visibility = 'visible'",200);	
+    },
+
+    writeTip: function(msg) {
+      if ( this.tip && typeof this.tip.innerHTML != "undefined" ) this.tip.innerHTML = msg;
+    },
+
+    positionTip: function(e) {
+      var x = e.pageX? e.pageX: e.clientX + viewport.scrollX;
+      var y = e.pageY? e.pageY: e.clientY + viewport.scrollY;
+
+      if ( x + this.tip.offsetWidth + this.offX > viewport.width + viewport.scrollX )
+        x = x - this.tip.offsetWidth - this.offX;
+      else x = x + this.offX;
+
+      if ( y + this.tip.offsetHeight + this.offY > viewport.height + viewport.scrollY )
+        y = ( y - this.tip.offsetHeight - this.offY > viewport.scrollY )? y - this.tip.offsetHeight - this.offY : viewport.height + viewport.scrollY - this.tip.offsetHeight;
+      else y = y + this.offY;
+
+      this.tip.style.left = x + "px"; this.tip.style.top = y + "px";
+    },
+
+    hide: function() {
+      if (this.t1) clearTimeout(this.t1);	
+    	if (this.t2) clearTimeout(this.t2); 
+      this.t2 = setTimeout("document.getElementById('" + this.tipID + "').style.visibility = 'hidden'",200);
+    	// release mousemove
+    	if (this.followMouse) 
+    		dw_event.remove( document, "mousemove", this.trackMouse, true );
+      this.tip = null;
+    },
+
+    trackMouse: function(e) {
+    	e = dw_event.DOMit(e);
+     	Tooltip.positionTip(e);	
+    }
+}
+
+Tooltip.init();
+
+/*************************************************************************
+	dw_event.js (version date Feb 2004)
+*************************************************************************/
+var dw_event = {
+  add: function(obj, etype, fp, cap) {
+    cap = cap || false;
+    if (obj.addEventListener) obj.addEventListener(etype, fp, cap);
+    else if (obj.attachEvent) obj.attachEvent("on" + etype, fp);
+  }, 
+
+  remove: function(obj, etype, fp, cap) {
+    cap = cap || false;
+    if (obj.removeEventListener) obj.removeEventListener(etype, fp, cap);
+    else if (obj.detachEvent) obj.detachEvent("on" + etype, fp);
+  }, 
+
+  DOMit: function(e) { 
+    e = e? e: window.event;
+    e.tgt = e.srcElement? e.srcElement: e.target;
+
+    if (!e.preventDefault) e.preventDefault = function () { return false; }
+    if (!e.stopPropagation) e.stopPropagation = function () { if (window.event) window.event.cancelBubble = true; }
+
+    return e;
+  }
+}
+/*************************************************************************
+	dw_viewport.js (version date Nov 2003)
+*************************************************************************/
+viewport = {
+  getWinWidth: function () {
+    this.width = 0;
+    if (window.innerWidth) this.width = window.innerWidth - 18;
+    else if (document.documentElement && document.documentElement.clientWidth) 
+  		this.width = document.documentElement.clientWidth;
+    else if (document.body && document.body.clientWidth) 
+  		this.width = document.body.clientWidth;
+  },
+
+  getWinHeight: function () {
+    this.height = 0;
+    if (window.innerHeight) this.height = window.innerHeight - 18;
+  	else if (document.documentElement && document.documentElement.clientHeight) 
+  		this.height = document.documentElement.clientHeight;
+  	else if (document.body && document.body.clientHeight) 
+  		this.height = document.body.clientHeight;
+  },
+
+  getScrollX: function () {
+    this.scrollX = 0;
+  	if (typeof window.pageXOffset == "number") this.scrollX = window.pageXOffset;
+  	else if (document.documentElement && document.documentElement.scrollLeft)
+  		this.scrollX = document.documentElement.scrollLeft;
+  	else if (document.body && document.body.scrollLeft) 
+  		this.scrollX = document.body.scrollLeft; 
+  	else if (window.scrollX) this.scrollX = window.scrollX;
+  },
+
+  getScrollY: function () {
+    this.scrollY = 0;
+    if (typeof window.pageYOffset == "number") this.scrollY = window.pageYOffset;
+    else if (document.documentElement && document.documentElement.scrollTop)
+  		this.scrollY = document.documentElement.scrollTop;
+  	else if (document.body && document.body.scrollTop) 
+  		this.scrollY = document.body.scrollTop; 
+  	else if (window.scrollY) this.scrollY = window.scrollY;
+  },
+
+  getAll: function () {
+    this.getWinWidth(); this.getWinHeight();
+    this.getScrollX();  this.getScrollY();
+  }
+}
+//-->
+</script>
+
+<script language=javascript type=text/javascript>
+/*************************************************************************
+	This code is from Dynamic Web Coding at http://www.dyn-web.com/
+	Copyright 2003 by Sharon Paine 
+	See Terms of Use at http://www.dyn-web.com/bus/terms.html
+	regarding conditions under which you may use this code.
+	This notice must be retained in the code as is!
+*************************************************************************/
+function doTooltip(e, msg) {
+  if ( typeof Tooltip == "undefined" || !Tooltip.ready ) return;
+  Tooltip.show(e, msg);
+}
+
+function hideTip() {
+  if ( typeof Tooltip == "undefined" || !Tooltip.ready ) return;
+  Tooltip.hide();
+}
+</script>
+
+<script language=javascript type=text/javascript>
+<!--
+function ShowHide(id)
+{
+  var itm = null;
+  if (document.getElementById) {
+	itm = document.getElementById(id);
+  } else if (document.all){
+	itm = document.all[id];
+  } else if (document.layers){
+	itm = document.layers[id];
+  }
+
+  if (!itm) {
+   // do nothing
+  }
+  else if (itm.style) {
+	if (itm.style.display == "none") {
+	  itm.style.display = "";
+	}
+	else {
+	  itm.style.display = "none";
+	}
+  }
+  else {
+	itm.visibility = "show";
+  }
+}
+//-->
+</script>
+
+<div id=ed2k_open style="DISPLAY: none; Z-INDEX: 2">
+<table align=center border=0 cellpadding=4 cellspacing=0 width="80%">
+  <tr>
+    <td align=center class="shared-header" style="background-color: #000000">
+      <p><font face=Tahoma style="font-size: 8pt;"><b>文件链接</b></font></p>
+    </td>
+  </tr>
+  <tr>
+    <td align=center valign=top class=tabs>
+      <br />
+      <form action="./" method="GET">
+        <input type="hidden" name=ses value="621927177">
+        <input type="hidden" name=w value=transfer>
+        <textarea name="ed2k" cols="94" rows="7" class=dinput></textarea>
+        <br /><br /><input type="submit" value="开始"></font>
+      </form>
+      <br /><br />
+    </td>
+  </tr>
+</table>
+</div>&nbsp;<table border=0 align=center cellpadding=4 cellspacing=0 width="95%">
+<tr>
+ <td align=center valign=middle>
+<script type="text/javascript">
+<!--
+function GotoCat(cat) {
+	var loc= window.location.href;
+	var pos= loc.indexOf("cat=");
+
+	if (pos>1) {
+		if (loc.substr(pos-1,1)=="&") pos--;
+		var subs=loc.substr(pos+3,256);
+		var pos2=subs.indexOf("&");
+		if (pos2==-1) pos2=loc.length;
+		pos2 += pos+3;
+		var t1=loc.substring(0,pos);
+		var t2=loc.substring(pos2+1,loc.length );
+		loc=t1+t2;
+	}
+	window.location.href=loc+"&cat="+cat;
+}
+//-->
+</script>
+
+<table border=0 align=center cellpadding=2 cellspacing=0 width="100%" bgcolor="#99CCFF">
+<tr>
+ <td class="smallheader" colspan="5" style="background-color: #000000"><img src="arrow_down.gif" align="middle">&nbsp;<b><a href="#" onMouseover="columnmenu(event,'transfer','menudown','文件名','文件名','大小','大小','已完成','已完成','进程','进程','速度','速度','来源','来源','优先级','优先级','分类','分类','','')" onMouseout="delayhidemenu()">下载</a>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="l_showcat.gif" align="bottom">&nbsp;
+ <a href="#" onMouseover="showmenu(event,'<a href=&quot;/?ses=621927177&w=transfer&cat=0&quot;><div class=menuitems><img class=menuchecked src=checked.gif>全部&nbsp;</div></a><div class=menuitems>&nbsp;------------------------------&nbsp;</div><a href=&quot;/?ses=621927177&w=transfer&cat=-1&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>所有其它&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-2&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>未完成&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-3&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>已完成&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-4&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>等待中&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-5&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>下载中&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-6&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>错误&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-7&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>暂停&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-8&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>曾经看见完整的&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-9&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>视频&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-10&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>音频&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-11&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>压缩包&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-12&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>CD镜像&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-13&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>文档&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-14&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>图像&nbsp;</div></a><a href=&quot;/?ses=621927177&w=transfer&cat=-15&quot;><div class=menuitems><img class=menuchecked src=checked_no.gif>程序&nbsp;</div></a>')" onMouseout="delayhidemenu()"><img src="m_category.gif" align="middle">&nbsp;&nbsp;&nbsp;全部</b>
+ </a>
+ </td>
+ <td class="smallheader" colspan="5" style="background-color: #000000" align="right"><a href="?ses=621927177&amp;w=transfer&clearcompleted=all"><img src="m_clearcompleted.gif" align="middle"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onMouseover="catpriomenu(event,'admin','621927177')" onMouseout="delayhidemenu()"><img src="m_catprio.gif" align="middle"></a></td>
+</tr>
+<tr>
+ <td valign=middle class="down-header-left"><table cellspacing="0" cellpadding="0" border="0" valign=top class="down-header-left"><tr><td width="16" align="center"><a href="?ses=621927177&amp;w=transfer&amp;sort=dstate"><b>&times;</b></a></td><td>&nbsp;</td><td width="16" align="center"><a href="?ses=621927177&amp;w=transfer&amp;sort=dtype"><b>&times;</b></a></td><td>&nbsp;</td><td><a href="?ses=621927177&amp;w=transfer&amp;sort=dname&sortreverse=false"><b>文件名&nbsp;<img src="l_uparrow.gif" align="middle"></b></a></td></tr></table></td>
+ <td valign=middle class="down-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=dsize"><b>大小</b></a></td>
+ <td valign=middle class="down-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=dtransferred"><b>已完成</b></a></td>
+ <td valign=middle class="down-header"><a href="?ses=621927177&amp;w=transfer&amp;sort=dprogress"><b>进程</b></a></td>
+ <td valign=middle class="down-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=dspeed"><b>速度</b></a></td>
+ <td valign=middle class="down-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=dsources"><b>来源</b></a></td>
+ <td valign=middle class="down-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=dpriority"><b>优先级</b></a></td>
+ <td valign=middle class="down-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=dcategory"><b>分类</b></a></td>
+ <td valign=middle class="down-header">&nbsp;</td>
+</tr>
+<tr>
+ <td valign=top class="down-line-waiting-left" nowrap><table cellspacing="0" cellpadding="0" border="0" valign=top class="down-line-waiting-left">
+ <tr><td>
+ <a href="#" onMouseover="downmenu(event,'admin','面具之下.BD1080P高清英语中英双语字幕(ED2000.COM).mp4\nHash: E3CE6DA52DAFEE414F21AABFE5E03C2E\n大小: 1.13 GB    (在磁盘上的大小:0 字节)\n\npart.met 文件: 001.part.met\n状态: 等待中\n已完成: 0 字节/1.13 GB (0.0%)\n来源: 0 (有用:0,NNP:0); A4AF:0\n部分: 126, 可获得: 0 (0.0%)\n\n上次完成: 从不\n上次接收: 星期一, 2015/12/21 9:13:20','ed2k://|file|%E9%9D%A2%E5%85%B7%E4%B9%8B%E4%B8%8B.BD1080P%E9%AB%98%E6%B8%85%E8%8B%B1%E8%AF%AD%E4%B8%AD%E8%8B%B1%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95(ED2000.COM).mp4|1218409586|E3CE6DA52DAFEE414F21AABFE5E03C2E|h=YZMPQPBSKZ4IKZJ5HNPSA4SWL4PXXNTR|/','waiting','disabled','面具之下.BD1080P高清英语中英双语字幕(ED2000.COM).mp4','621927177','E3CE6DA52DAFEE414F21AABFE5E03C2E','','no')" onMouseout="delayhidemenu()">
+ <img src="t_waiting.gif"></a>
+ </td>
+ <td>&nbsp;</td>
+ <td background="filetype_video.gif" width="16" height="16" style="background-position:center;background-repeat:no-repeat">
+ <img src="is_halfnone.gif"></td><td>&nbsp;</td><td onMouseover="doTooltip(event, this.firstChild.innerHTML)" onMouseout="hideTip()"><div style="display: none;">面具之下.BD1080P高清英语中英双语字幕(ED2000.COM).mp4<br />Hash: E3CE6DA52DAFEE414F21AABFE5E03C2E<br />大小: 1.13 GB    (在磁盘上的大小:0 字节)<br /><br />part.met 文件: 001.part.met<br />状态: 等待中<br />已完成: 0 字节/1.13 GB (0.0%)<br />来源: 0 (有用:0,NNP:0); A4AF:0<br />部分: 126, 可获得: 0 (0.0%)<br /><br />上次完成: 从不<br />上次接收: 星期一, 2015/12/21 9:13:20</div>面具之下.BD1080P高清英语中英双语字幕(ED2000.COM).mp4</td></tr></table></td>
+ <td valign=top class="down-line-waiting-right" nowrap style="font-size: 7.5pt">1.13 GB</td>
+ <td valign=top class="down-line-waiting-right" nowrap">-</td>
+ <td valign=middle class="down-line-waiting" width=350><table width=350 height=11 border=1 class="percent_table" cellpadding=0 cellspacing=0 bordercolor="#000000"><tr><td><img src="transparent.gif" height=3 width=5><br /><img src="red.gif" height=13 width=350></td></tr></table></td>
+ <td valign=top class="down-line-waiting-right" nowrap>-</td>
+ <td valign=top class="down-line-waiting" nowrap style="font-size: 7.5pt">-</td>
+ <td valign=top class="down-line-waiting" nowrap style="font-size: 7.5pt"><a href="#" onMouseover="downpriomenu(event,'admin','621927177','E3CE6DA52DAFEE414F21AABFE5E03C2E','Auto','waiting')" onMouseout="delayhidemenu()">自动[高]</a></td>
+ <td valign=top class="down-line-waiting" style="font-size: 7.5pt"><a href="#" onMouseover="showmenu(event,'<a href=&quot;/?ses=621927177&w=transfer&op=setcat&file=E3CE6DA52DAFEE414F21AABFE5E03C2E&filecat=0&quot;><div class=menuitems><img class=menuchecked src=checked.gif>(未指定)&nbsp;</div></a>','waiting')" onMouseout="delayhidemenu()">全部</a></td>
+ <td valign=top class="down-line-waiting" width="9" style="font-size: 7.5pt"><img src="checked_no.gif"></td>
+</tr>
+<tr>
+ <td colspan="10" bgcolor="#005784" height="1"></td>
+</tr>
+<tr>
+ <td valign=middle class="down-header-left" style="font-size: 7.5pt"><b>总共已下载</b></td>
+ <td valign=middle class="down-header-right" nowrap style="font-size: 7.5pt"><b>1.13 GB</b></td>
+ <td valign=middle class="down-header-right" nowrap style="font-size: 7.5pt"><b>0 字节</b></td>
+ <td valign=middle class="down-header">&nbsp;</td>
+ <td valign=middle class="down-header-right" nowrap style="font-size: 7.5pt"><b>    0.00</b></td>
+ <td valign=middle class="down-header-right" colspan="5" style="font-size: 7.5pt"><b>总文件数: 1</b></td>
+</tr>
+</table>
+&nbsp;
+<table border=0 align=center cellpadding=4 cellspacing=0 width="100%">
+<tr>
+ <td class="smallheader" colspan="6" style="background-color: #000000"><img src="arrow_up.gif" align="middle">&nbsp;<b><a href="#" onMouseover="columnmenu(event,'transfer','menuup','用户名','用户名','客户端版本:','客户端版本:','文件名','文件名','本次会话的上传:下载比率:','本次会话的上传:下载比率:','速度','速度','','','','','','','','','','','','')" onMouseout="delayhidemenu()">上传</a></b></td>
+</tr>
+<tr>
+ <td class="up-header-left"><table cellspacing="0" cellpadding="0" border="0" valign=top class="up-header-left"><tr><td width="16" align="center"><a href="?ses=621927177&amp;w=transfer&amp;sort=uspeed"><b>&times;</b></a></td><td>&nbsp;</td><td width="16" align="center"><a href="?ses=621927177&amp;w=transfer&amp;sort=uclient"><b>&times;</b></a></td><td>&nbsp;</td><td><a href="?ses=621927177&amp;w=transfer&amp;sort=uuser"><b>用户名</b></a></td></tr></table></td>
+ <td class="up-header-left" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=uversion"><b>客户端版本:</b></a></td>
+ <td class="up-header-left" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=ufilename&sortreverse=false"><b>文件名&nbsp;<img src="l_uparrow.gif" align="middle"></b></a></td>
+ <td class="up-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=utransferred"><b>本次会话的上传:下载比率:</b></a></td>
+ <td class="up-header" style="font-size: 7.5pt"><a href="?ses=621927177&amp;w=transfer&amp;sort=uspeed"><b>速度</b></a></td>
+</tr>
+
+<tr>
+ <td class="up-header-left" style="font-size: 7.5pt"><b>总共已上传</b></td>
+ <td class="up-header"></td>
+ <td class="up-header"></td>
+ <td class="up-header" style="font-size: 7.5pt"><b>0 字节 / 0 字节</b></td>
+ <td class="up-header" style="font-size: 7.5pt"><b>    0.00 </b></td>
+</tr>
+</table>
+&nbsp;
+<table border=0 align=center cellpadding=4 cellspacing=0 width="100%">
+<tr>
+ <td class="smallheader" style="background-color: #000000"><img src="arrow_up_q.gif" align="middle">&nbsp;<b><a href="#" onMouseover="columnmenu(event,'transfer','menuqueue','用户名','用户名','客户端软件','客户端软件','文件名','文件名','得分','得分','','','','','','','','','','','','','','')" onMouseout="delayhidemenu()">显示队列</a></b></td>
+ <td class="smallheader" colspan="4" align="right" style="background-color: #000000"><b>0 (0)</b></td>
+</tr>
+<tr>
+ <SCRIPT language=JavaScript>
+  if (0!=0) { document.write('<td class="smallheader"><a href="?ses=621927177&amp;w=transfer&amp;showuploadqueue=true"><img src="l_add.gif" align="middle"></a>&nbsp;&nbsp;<b>显示队列</b></td>'); }
+  else { document.write('<td class="smallheader"><img src="l_none.gif" align="middle">&nbsp;&nbsp;<b>显示队列</b></td>'); }
+ </SCRIPT>
+ <td class="smallheader" colspan="4" align="right"><b>0 (0)</b></td>
+</tr>
+<tr>
+ <SCRIPT language=JavaScript>
+  if (0!=0) { document.write('<td class="smallheader"><a href="?ses=621927177&amp;w=transfer&amp;showuploadqueuefriend=true"><img src="l_add.gif" align="middle"></a>&nbsp;&nbsp;<b>在队列中显示朋友</b></td>'); }
+  else { document.write('<td class="smallheader"><img src="l_none.gif" align="middle">&nbsp;&nbsp;<b>在队列中显示朋友</b></td>'); }
+ </SCRIPT>
+ <td class="smallheader" colspan="4" align="right"><b>0 (0)</b></td>
+</tr>
+<tr>
+ <SCRIPT language=JavaScript>
+  if (0!=0) { document.write('<td class="smallheader"><a href="?ses=621927177&amp;w=transfer&amp;showuploadqueuebanned=true"><img src="l_add.gif" align="middle"></a>&nbsp;&nbsp;<b>在队列中显示被ban的客户端</b></td>'); }
+  else { document.write('<td class="smallheader"><img src="l_none.gif" align="middle">&nbsp;&nbsp;<b>在队列中显示被ban的客户端</b></td>'); }
+ </SCRIPT>
+ <td class="smallheader" colspan="4" align="right"><b>0 (0)</b></td>
+</tr>
+</td>
+</tr>
+</table></body>
+</html>
